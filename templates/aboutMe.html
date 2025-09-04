@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Ujjwal's Student Journey | CodroidHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Updated font link -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #5a2e9d; /* Slightly darker purple for contrast */
+            --secondary: #3b82f6; /* A clear, professional blue */
+            --bg-light: #f9fbfd;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Body & background */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fbc2eb, #a6c0fe);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            margin: 0; padding: 0;
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigation bar */
+        header {
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(18px, 4vw, 22px);
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo svg {
+            width: clamp(24px, 5vw, 32px);
+            height: clamp(24px, 5vw, 32px);
+            fill: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: clamp(16px, 3vw, 24px);
+        }
+
+        /* Updated nav links with border on hover */
+        nav a {
+            margin-left: 0;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: clamp(15px, 2vw, 17px);
+            padding: 8px 14px;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            transition: color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+            transform: translateY(-2px);
+            border-color: var(--secondary);
+        }
+
+        /* Main container */
+        main {
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 12px 32px rgba(138,69,255,0.13);
+            border-radius: 20px;
+            max-width: 650px;
+            width: 95%;
+            padding: 38px 30px 28px 30px;
+            margin: 40px auto;
+            animation: fadeInMain 1.6s;
+        }
+
+        @keyframes fadeInMain {
+            from { opacity: 0; transform: scale(0.95);}
+            to { opacity: 1; transform: scale(1);}
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: bold;
+            color: #8842d5;
+            text-align: center;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 2px 8px #b27cff33);
+            letter-spacing: .04em;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: #5a2e9d;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #4c4c4c;
+            line-height: 1.7;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            position: relative;
+            animation: pFade 1.5s;
+        }
+
+        @keyframes pFade {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            background: linear-gradient(90deg, #b9cdfc 0%, #e2c3fc 100%);
+            box-shadow: 0 4px 16px #b27cff15;
+            border-radius: 8px;
+            padding: 11px 19px;
+            font-weight: 600;
+            color: #564080;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            color: #fff;
+            font-weight: 500;
+            margin-bottom: 24px;
+            font-size: 1.05rem;
+            text-align: center;
+            animation: fadeInFooter 1.5s;
+        }
+
+        @keyframes fadeInFooter {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            main, header {
+                padding: 12px;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            nav {
+                width: 100%;
+                text-align: center;
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            nav a {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo" aria-label="Ujjwal Rana Home">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" role="img" >
+                <path d="M55 10H9a3 3 0 0 0-3 3v38a3 3 0 0 0 3 3h46a3 3 0 0 0 3-3V13a3 3 0 0 0-3-3Zm-3 35H12V19h40Zm-25-5h-6v-3h6Zm0-5h-6v-3h6Zm16 5h-6v-3h6Zm0-5h-6v-3h6Zm-8 11a2 2 0 0 1-2-2v-6h4v6a2 2 0 0 1-2 2Zm18-18-3.56-3.56-1.41 1.41L47.17 34l-4.14 4.14 1.41 1.41L53 30.83Z" />
+            </svg>
+            Ujjwal Rana
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/aboutMe">About Me</a>
+            <a href="/aboutCodroid">CodroidHub</a>
+            <a href="https://github.com/Ujjwal-Rana786" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/ujjwal-rana-b284b3360/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="/blogs">Blogs</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- The following content is from your "My Professional Journey in Data Science" Canvas document -->
+        <h1>My Professional Journey in Data Science</h1>
+        <p>As a 3rd-year student at Govt. PostGraduate College, I began with a strong foundation in computer science, but I was looking for a way to connect my academic knowledge with real-world skills. The world of data science was exciting, but it felt out of my reach. My journey to bridge this gap would not have been possible without the exceptional guidance and <strong>support of my mentors.</strong> <strong>Sir Devashish Kumar</strong>, as the <strong>founder and director</strong>, set a positive and empowering tone for the entire program. His vision was a constant source of motivation. At the same time, <strong>Sir Annant Dhaiya</strong> provided patient and clear instruction, helping me to understand complex concepts and build my confidence step by step. Their mentorship was invaluable and was the key to my growth.</p>
+        
+        <h2>My Internship at CodroidHub</h2>
+        <p>My professional path changed completely when I started an internship in <strong>Data Science using Python</strong> at <strong>CodroidHub Private Limited</strong>. This was more than just training; it was a real-world experience that turned my academic knowledge into practical expertise.</p>
+        <p>During this internship, I gained important skills with several key tools and libraries:</p>
+        
+        <ul>
+            <li><strong>Python Fundamentals:</strong> I became much better at writing clean and effective code in Python, which is the main language for data science.</li>
+            <li><strong>Data Analysis and Visualization:</strong> I got hands-on experience using powerful tools like <strong>NumPy</strong> for calculations, <strong>Pandas</strong> for managing data, and <strong>Matplotlib</strong> for creating clear charts. These skills helped me understand and explain complex data.</li>
+            <li><strong>Web Scraping:</strong> I learned how to use <strong>BeautifulSoup</strong> and the <code>requests</code> library to collect data from websites, a critical skill for any data scientist.</li>
+            <li><strong>Business Intelligence with Power BI:</strong> I learned to use <strong>Power BI</strong> to create interactive dashboards and reports, translating complex data into actionable business insights.</li>
+            <li><strong>Building Applications:</strong> I used <strong>Flask</strong> to build and launch web applications to show my data projects. This gave me the ability to turn my insights into something interactive and shareable.</li>
+        </ul>
+        
+        <h2>Building Confidence for My Career</h2>
+        <p>The supportive team at CodroidHub was key to building my confidence. The guidance I received was priceless; the mentors were knowledgeable, patient, and truly committed to my success. The chance to work on real projects from start to finish proved to me that I can take my skills and create valuable solutions.</p>
+        <p>This journey has completely changed my view of myself. I am no longer just a student with book knowledge. I am a <strong>confident data scientist</strong> with a solid portfolio and a clear path forward. The projects and skills I gained have given me the self-assurance to take on tough challenges and contribute to the technology world. I am excited to continue learning and growing in my career.</p>
+    </main>
+
+    <div class="footer">
+        Inspired by growth at CodroidHub 🚀 | Govt PG College, 3rd Year Student
+    </div>
+</body>
+</html>

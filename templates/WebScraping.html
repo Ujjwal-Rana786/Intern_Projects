@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Web Scraping - CodroidHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET & GLOBAL STYLES ========== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-attachment: fixed;
+        }
+
+        /* ========== HEADER ========== */
+        header {
+            background: rgba(255,255,255,0.9);
+            padding: 15px 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            backdrop-filter: blur(6px);
+        }
+        header .logo {
+            font-weight: bold;
+            font-size: 22px;
+            color: #007BFF;
+            letter-spacing: 1px;
+        }
+        header nav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        header nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            font-size: 16px;
+            transition: 0.3s;
+            position: relative;
+        }
+        header nav a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #007BFF;
+            transition: 0.3s;
+        }
+        header nav a:hover {
+            color: #007BFF;
+        }
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* ========== MAIN CONTENT ========== */
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+        h1 {
+            text-align: center;
+            font-size: clamp(24px, 5vw, 32px);
+            margin-bottom: 40px;
+            color: #242424;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.08);
+        }
+
+        /* ========== CARDS & BUTTONS ========== */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .card {
+            background: rgba(255,255,255,0.95);
+            padding: 25px 20px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 30px rgba(0,0,0,0.15);
+        }
+        .card img {
+            width: 80px;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+        .card:hover img {
+            transform: scale(1.1);
+        }
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #007BFF;
+            font-weight: 700;
+        }
+        .card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .card .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .card a {
+            text-decoration: none;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            white-space: nowrap;
+            display: block;
+            width: 100%;
+        }
+        /* Primary button style */
+        .card a.primary-button {
+            background: linear-gradient(135deg, #007BFF, #00C6FF);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+        .card a.primary-button:hover {
+            background: linear-gradient(135deg, #0056b3, #0084d4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+        }
+        /* Secondary button style */
+        .card a.secondary-button {
+            background: white;
+            color: #007BFF;
+            border: 2px solid #007BFF;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.1);
+        }
+        .card a.secondary-button:hover {
+            background: #e6f3ff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.2);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 600px) {
+            header nav a {
+                margin-left: 12px;
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .card .button-group {
+                flex-direction: column;
+            }
+        }
+
+        /* ========== ANIMATIONS ========== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Ujjwal Rana</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/explore">Explore</a>
+            <a href="/aboutUs">About Us</a>
+            <a href="/aboutCodroid" target="_blank">CodroidHub</a>
+            <a href="https://github.com/Ujjwal-Rana786" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ujjwal-rana-b284b3360/" target="_blank">LinkedIn</a>
+            <a href="/blogs">Blogs</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Web Scraping Topics</h1>
+        <div class="cards-container">
+            <div class="card">
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/10399/10399201.png"
+                    alt="Web scraping book icon"
+                />
+                <h2>Books to Scrape</h2>
+                <p>
+                    From this website we scraped the books names and its price. 
+                </p>
+                <div class="button-group">
+                    <a href="https://books.toscrape.com/catalogue/page-1.html" class="primary-button" target="_blank">Go to Website</a>
+                    <a href="/bookTOScrape" class="secondary-button">View scraped data</a>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="/static/ClgLogo.jpg"
+                    alt="Scrapy Icon"
+                />
+                <h2>Goverment Post Graduate College.</h2>
+                <p>
+                    From this website we scraped the faculty name, post and department.
+                </p>
+                <div class="button-group">
+                    <a href="http://gcambalacantthry.edu.in/Home" class="primary-button" target="_blank">Go to Website</a>
+                    <a href="/gcambala" class="secondary-button">View scraped data</a>
+                </div>
+                
+            </div>
+            <div class="card">
+                <img
+                    src="/static/flipkartLogo.png"
+                    alt="flipkart icon "
+                />
+                <h2>Flipkart</h2>
+                <p>
+                    From the Flipkart website we scraped the deatils about the laptops like laptops names, prices, rating, specification etc. 
+                </p>
+                <div class="button-group">
+                    <a href="https://www.flipkart.com/search?q=laptop&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=off&as=off" class="primary-button" target="_blank">Go to Website</a>
+                    <a href="/flipkart" class="secondary-button">View scraped data</a>
+                </div>
+               
+            </div>
+            <div class="card">
+                <img
+                    src="/static/BBCSports.jpeg"
+                    alt="BBC Football Sports "
+                />
+                <h2>BBC Sports Football</h2>
+                <p>
+                    From this website we Scraped the Footbal teams details. 
+                </p>
+                 <div class="button-group">
+                    <a href="https://www.bbc.co.uk/sport/football/premier-league/table" class="primary-button" target="_blank">Go to Website</a>
+                    <a href="/BBCSports" class="secondary-button">View scraped data</a>
+                </div>
+                
+            </div>
+            <div class="card">
+                <img
+                    src="/static/linkedin.png"
+                    alt="Linkedin image"
+                />
+                <h2>Linkedin</h2>
+                <p>From this website we scraped the job title, company name, location,qualification and job summary</p>
+                 <div class="button-group">
+                    <a href="https://www.linkedin.com/jobs/search?keywords=Software+Engineer&location=New+York" class="primary-button" target="_blank">Go to Website</a>
+                    <a href="/linkedin" class="secondary-button">View scraped data</a>
+                </div>
+            </div>
+            <div class="card">
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/3194/3194979.png"
+                    alt="Quotes Icon"
+                />
+                <h2>Quotes website</h2>
+                <p>
+                    From this Website we scraped the quotes
+                </p>
+                 <div class="button-group">
+                    <a href="https://quotes.toscrape.com" class="primary-button" target="_blank">Go to Website</a>
+                    <a href="/quote" class="secondary-button">View scraped data</a>
+                
+                </div>
+          </div>
+    </main>
+</body>
+</html>

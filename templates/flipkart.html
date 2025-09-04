@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    /* Use a linear gradient from a light blue to a light purple */
+    background: linear-gradient(to right, #e6e9f0, #eef1f5);
+    margin: 0;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+
+  /* Table and other styles remain the same for a clean look */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff; /* Table background should be solid to stand out */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  th {
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+  }
+
+  td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+
+  tr:hover {
+    background-color: #e6f3ff;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+  {{ table | safe }}
+
+</body>
+</html>

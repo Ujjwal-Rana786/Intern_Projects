@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Blogs - CodroidHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #5a2e9d;
+            --secondary: #3b82f6;
+            --bg-light: #f9fbfd;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fbc2eb, #a6c0fe);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            overflow-x: hidden;
+        }
+        header {
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(18px, 4vw, 22px);
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        header .logo svg {
+            width: clamp(24px, 5vw, 32px);
+            height: clamp(24px, 5vw, 32px);
+            fill: var(--primary);
+        }
+        header nav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        header nav a {
+            margin-left: clamp(16px, 3vw, 24px);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        header nav a:hover {
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+        main {
+            flex: 1;
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            font-size: 28px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            justify-content: center;
+        }
+        .card {
+            background: #fff;
+            min-height: 420px;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }       
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .card p {
+            font-size: 15px;
+            line-height: 1.5;
+            color: var(--text-light);
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            line-clamp: 6; /* Add this line */
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 25px;
+           }
+
+       .card-icon {
+              width: 200px;
+              height: 200px;
+              margin-bottom: 1.5rem;
+              align-self: flex-start; /* Changed from center to flex-start for left alignment */
+             }
+
+        .read-more-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-size: 200% 100%;
+            background-position: left;
+            text-align: center;
+            display: inline-block;
+            font-size: 16px;
+            user-select: none;
+        }
+        .read-more-btn:hover {
+            background-position: right;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        @media (max-width: 700px) {
+            main {
+                padding: 0 10px;
+            }
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .card {
+                min-height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" role="img" >
+                <path d="M55 10H9a3 3 0 0 0-3 3v38a3 3 0 0 0 3 3h46a3 3 0 0 0 3-3V13a3 3 0 0 0-3-3Zm-3 35H12V19h40Zm-25-5h-6v-3h6Zm0-5h-6v-3h6Zm16 5h-6v-3h6Zm0-5h-6v-3h6Zm-8 11a2 2 0 0 1-2-2v-6h4v6a2 2 0 0 1-2 2Zm18-18-3.56-3.56-1.41 1.41L47.17 34l-4.14 4.14 1.41 1.41L53 30.83Z" />
+            </svg>
+            CodroidHub
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/explore">Explore</a>
+            <a href="/aboutMe">About Me</a>
+            <a href="/aboutCodroid" target="_blank">CodroidHub</a>
+            <a href="https://github.com/Ujjwal-Rana786" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ujjwal-rana-b284b3360/" target="_blank">LinkedIn</a>
+            <a href="/blogs">Blogs</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Latest Blogs</h1>
+        <div class="cards-container">
+            <div class="card">
+                <img class="card-icon" src="/static/WebBlocked.jpg" alt="Web Blocked" />
+                <h2>Getting Blocked While Scraping? 5 Pro Tips That Actually Work 🚫➡️✅</h2>
+                <p>Websites block scraping by spotting too many requests from the same IP or fake browser info. To avoid this, use rotating IP addresses so requests come from different places. Change your browser identity (user-agent) often to look like real users. Add random delays and actions to mimic human browsing instead of robotic patterns. These tricks help scraping tools stay unnoticed and work smoothly</p>
+                <button class="read-more-btn" onclick="window.location.href='https://www.linkedin.com/pulse/getting-blocked-while-scraping-5-pro-tips-actually-work-ujjwal-rana-6bfyc/?trackingId=GuRsQ34Z3ngfQ69LnKoaUw%3D%3D'">Read More</button>
+            </div>
+
+            <div class="card">
+                <img class="card-icon" src="/static/pythonlist.png" alt="Python List" />
+                <h2>Mastering In Python List</h2>
+                <p>Python lists are ordered collections used to store multiple items in one place. They are flexible, allowing you to add, change, or remove items easily. Lists can hold different data types and support accessing items by their position using indexes. Learning to use lists effectively is key to writing efficient Python code.</p>
+                <button class="read-more-btn" onclick="window.location.href='https://www.linkedin.com/pulse/mastering-python-lists-functions-advantages-how-differ-ujjwal-rana-2rmtc/?trackingId=pmY%2FAOjxTW1YbrN4hBkJKg%3D%3D'">Read More</button>
+            </div>
+        </div>
+    </main>
+
+   
+</body>
+</html>

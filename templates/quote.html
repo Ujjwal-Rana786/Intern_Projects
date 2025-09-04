@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #5a2e9d;
+            --secondary-color: #3b82f6;
+            --background-gradient: linear-gradient(135deg, #e0f7fa, #fce4ec);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--background-gradient);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-strong);
+            backdrop-filter: blur(6px);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table thead tr {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        table th, table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+        table tbody tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        table tbody tr:hover {
+            background-color: #f1f5f9;
+            transition: 0.3s ease;
+        }
+        table td:first-child {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                padding: 1rem;
+            }
+            table th, table td {
+                padding: 0.7rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            {{ table | safe }}
+        </div>
+    </div>
+</body>
+</html>

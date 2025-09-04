@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Explore More - CodroidHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* ========== RESET & GLOBAL STYLES ========== */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+        color: #333;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-attachment: fixed;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+        background: rgba(255,255,255,0.9);
+        padding: 15px 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        backdrop-filter: blur(6px);
+    }
+    header .logo {
+        font-weight: bold;
+        font-size: 22px;
+        color: #007BFF;
+        letter-spacing: 1px;
+    }
+    header nav {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    header nav a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: #444;
+        font-weight: 500;
+        transition: 0.3s;
+        position: relative;
+    }
+    header nav a::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background: #007BFF;
+        transition: 0.3s;
+    }
+    header nav a:hover {
+        color: #007BFF;
+    }
+    header nav a:hover::after {
+        width: 100%;
+    }
+
+    /* ========== MAIN CONTENT ========== */
+    main {
+        flex: 1;
+        padding: 40px 20px;
+        animation: fadeIn 1.2s ease-in-out;
+    }
+    h1 {
+        text-align: center;
+        font-size: 32px;
+        margin-bottom: 40px;
+        color: #242424;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.08);
+    }
+
+    /* ========== CARDS ========== */
+    .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .card {
+        background: rgba(255,255,255,0.95);
+        padding: 25px 20px;
+        border-radius: 14px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        backdrop-filter: blur(4px);
+    }
+    .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 16px 30px rgba(0,0,0,0.15);
+    }
+    .card img {
+        width: 80px;
+        margin-bottom: 15px;
+        transition: 0.3s;
+    }
+    .card:hover img {
+        transform: scale(1.1);
+    }
+    .card h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        color: #007BFF;
+        font-weight: 700;
+    }
+    .card p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+    .card a {
+        text-decoration: none;
+        background: linear-gradient(135deg, #007BFF, #00C6FF);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        display: inline-block;
+        transition: background 0.3s ease, transform 0.2s;
+    }
+    .card a:hover {
+        background: linear-gradient(135deg, #0056b3, #0084d4);
+        transform: translateY(-2px);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 600px) {
+        header nav a {
+            margin-left: 12px;
+            font-size: 14px;
+        }
+        h1 {
+            font-size: 24px;
+        }
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+    <header>
+        <div class="logo">Ujjwal Rana</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/aboutMe">About Me</a>
+            <a href="/aboutCodroid" target="_blank">CodroidHub</a>
+            <a href="https://github.com/Ujjwal-Rana786" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/ujjwal-rana-b284b3360/" target="_blank">LinkedIn</a>
+            <a href="/blogs">Blogs</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Explore More</h1>
+        <div class="cards-container">
+            <!-- Web Scraping Card -->
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/4423/4423446.png" alt="Web Scraping Icon">
+                <h2>Web Scraping</h2>
+                <p>Learn how to collect and analyze data from websites using Python and automation tools.</p>
+                <a href="/WebScraping">Learn More</a>
+            </div>
+
+            <!-- Data Science Card -->
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1163/1163624.png" alt="Data Science Icon">
+                <h2>Data Science</h2>
+                <p>Master data analysis, visualization, and machine learning techniques to solve real-world problems.</p>
+                <a href="/dataScience">Learn More</a>
+            </div>
+
+            <!-- Power BI Card -->
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/2910/2910768.png" alt="Power BI Icon">
+                <h2>Power BI</h2>
+                <p>Create powerful, interactive dashboards and reports to turn raw data into insights.</p>
+                <a href="/PowerBI">Learn More</a>
+            </div>
+
+            <!-- AI/ML Card -->
+            <div class="card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="AI/ML Icon">
+                <h2>AI / Machine Learning</h2>
+                <p>Explore algorithms and techniques that enable machines to learn and make decisions.</p>
+                <a href="/AIML">Learn More</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>About CodroidHub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --primary: #5a2e9d; /* Slightly darker purple for contrast */
+            --secondary: #3b82f6; /* A clear, professional blue */
+            --bg-light: #f9fbfd;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --nav-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Keyframe animation for gradient background */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fbc2eb, #a6c0fe);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            overflow-x: hidden;
+        }
+
+        /* Updated header to match the portfolio page */
+        header {
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--nav-bg);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(18px, 4vw, 22px);
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Added a simple SVG to the logo for consistency */
+        header .logo svg {
+            width: clamp(24px, 5vw, 32px);
+            height: clamp(24px, 5vw, 32px);
+            fill: var(--primary);
+        }
+
+        header nav a {
+            margin-left: clamp(16px, 3vw, 24px);
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        header nav a:hover {
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        main {
+            flex: 1;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        /* Updated headings to use primary color and a different font family for style consistency */
+        h1, h2 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+        }
+        
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        ul {
+            list-style: none; /* Removed default list style */
+            padding-left: 0;
+            margin-bottom: 20px;
+        }
+
+        li {
+            line-height: 1.8;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px; /* Added padding for a custom bullet */
+        }
+        
+        /* Added a custom bullet point with a consistent color */
+        li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .social-links img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        /* Updated the feedback section styling */
+        .feedback-section {
+            border-top: 2px solid var(--primary);
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+        
+        .feedback-card {
+            background: #f3ecfa; /* Light purple background */
+            padding: 25px;
+            border-left: 6px solid var(--primary);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feedback-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .feedback-card p {
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        .feedback-card .student-name {
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 8px;
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            main {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            header nav {
+                width: 100%;
+                text-align: center;
+                justify-content: space-around;
+            }
+            header nav a {
+                margin: 0 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" role="img" >
+                <path d="M55 10H9a3 3 0 0 0-3 3v38a3 3 0 0 0 3 3h46a3 3 0 0 0 3-3V13a3 3 0 0 0-3-3Zm-3 35H12V19h40Zm-25-5h-6v-3h6Zm0-5h-6v-3h6Zm16 5h-6v-3h6Zm0-5h-6v-3h6Zm-8 11a2 2 0 0 1-2-2v-6h4v6a2 2 0 0 1-2 2Zm18-18-3.56-3.56-1.41 1.41L47.17 34l-4.14 4.14 1.41 1.41L53 30.83Z" />
+            </svg>
+            CodroidHub
+        </div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/aboutMe">About Me</a>
+            <a href="/aboutCodroid">CodroidHub</a>
+            <a href="https://github.com/CodroidHub" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/company/codroidhub" target="_blank">LinkedIn</a>
+            <a href="/blogs">Blogs</a>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- About CodroidHub -->
+        <h1>About CodroidHub</h1>
+        <p>
+            CodroidHub Pvt. Ltd. is a dynamic e-learning company founded on March 12, 2019, headquartered in Noida, Uttar Pradesh, India. We empower students, professionals, and academic institutions with high-quality, practical training in software development, data science, artificial intelligence, and emerging technologies.
+        </p>
+        <p>
+            By bridging the gap between theory and real-world application, we prepare learners for competitive careers in IT and related industries through hands-on projects, mentorship, and industry collaborations.
+        </p>
+    
+        <!-- Mission & Vision -->
+        <h2>Our Mission & Vision</h2>
+        <ul>
+            <li><b>Mission:</b> To empower individuals to learn, grow, and innovate using technology.</li>
+            <li><b>Vision:</b> To be a global hub for next-generation tech education and collaboration.</li>
+            <li><b>Tagline:</b> Introspect | Initiate | Innovate</li>
+        </ul>
+    
+        <!-- Company Highlights -->
+        <h2>Company Highlights</h2>
+        <ul>
+            <li><b>Founded:</b> March 12, 2019</li>
+            <li><b>Headquarters:</b> Noida, Uttar Pradesh, India</li>
+            <li><b>Industry:</b> Education Management, IT Training</li>
+            <li><b>Employees:</b> 11-50</li>
+            <li><b>Founder & Director:</b> Devashish Kumar (Intel Edge AI Certified, AWS Certified Solutions Architect Associate)</li>
+            <li>Active collaborations with leading colleges and corporate partners</li>
+        </ul>
+    
+        <!-- What We Offer -->
+        <h2>What We Offer</h2>
+        <ul>
+            <li>Hands-on training programs in coding, AI, ML, and data analytics</li>
+            <li>Real-life projects to develop job-ready skills</li>
+            <li>Industry-expert mentorship and guidance</li>
+            <li>Collaborative learning environment for innovation</li>
+            <li>Support for academic institutions to integrate tech education</li>
+        </ul>
+    
+        <!-- Our Team -->
+        <h2>Our Team</h2>
+        <ul>
+            <li><b>Devashish Kumar</b> – Founder & Director</li>
+            <li><b>R N Thakur, PhD</b> – Dean of Academics</li>
+            <li><b>Shraddha Kumar</b> – Technical Manager</li>
+            <li><b>Aman Soni</b> – Aspiring Data Analyst & Python Developer</li>
+        </ul>
+    
+        <!-- Social Links -->
+        <h2>Social Presence & Links</h2>
+        <div class="social-links">
+            <a href="https://codroidhub.com" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/841/841364.png" alt="Website Icon"> Website
+            </a>
+            <a href="https://github.com/CodroidHub" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub Icon"> GitHub
+            </a>
+            <a href="https://www.linkedin.com/company/codroidhub" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Icon"> LinkedIn
+            </a>
+            <a href="/blogs">
+                <img src="https://cdn-icons-png.flaticon.com/512/1355/1355443.png" alt="Blog Icon"> Blogs
+            </a>
+        </div>
+    
+        <!-- Student Feedback -->
+        <section class="feedback-section">
+            <h2>Student Feedback</h2>
+            <div class="feedback-card">
+                <p>"During my internship at CodroidHub in Data Science using Python (AI/ML), I had a very rewarding learning experience. The mentors here are highly knowledgeable, patient, and always willing to guide me whenever I faced challenges. The work environment is positive, collaborative, and motivating, which made learning both enjoyable and productive. My colleagues were friendly, cooperative, and always ready to share ideas, which helped me grow both technically and personally. </p>
+    
+                <p>I had the chance to work on interesting and practical projects, including web scraping to collect and process data from different sources and building applications using Flask to present data insights. These projects allowed me to put theory into practice and gain confidence in my skills.</p>
+    
+                <p>Overall, CodroidHub provides an excellent platform for learning, teamwork, and real industry exposure, and I am grateful for the opportunity to be a part of it."</p>
+                
+                <div class="student-name">— Ujjwal, Data-Scientist</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

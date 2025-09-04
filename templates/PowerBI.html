@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Power BI Dashboard Showcase</title>
+    <!-- Importing the Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ========== RESET & GLOBAL STYLES ========== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        background-attachment: fixed;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* ========== HEADER/NAVBAR STYLES ========== */
+      header {
+        background: rgba(255,255,255,0.9);
+        padding: 15px 30px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        backdrop-filter: blur(6px);
+        width: 100%;
+      }
+      header .logo {
+        font-weight: bold;
+        font-size: 22px;
+        color: #007BFF;
+        letter-spacing: 1px;
+      }
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      header nav a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #444;
+        font-weight: 500;
+        font-size: 16px;
+        transition: 0.3s;
+        position: relative;
+      }
+      header nav a::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background: #007BFF;
+        transition: 0.3s;
+      }
+      header nav a:hover {
+        color: #007BFF;
+      }
+      header nav a:hover::after {
+        width: 100%;
+      }
+
+      /* Main container */
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+        width: 100%;
+        flex: 1;
+      }
+
+      .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+      }
+
+      .page-header h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        color: #0078d4;
+        margin: 0 0 0.5rem 0;
+      }
+
+      .page-header p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: #555;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* ====== Updated Cards Layout ====== */
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+      }
+
+      .card {
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        min-height: 420px; /* taller cards */
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-icon {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #2a2a2a;
+        margin-bottom: 1rem;
+      }
+
+      .card-description {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .card-button {
+        display: inline-block;
+        background-color: #0078d4;
+        color: #fff;
+        padding: 1rem 1.5rem;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .card-button:hover {
+        background-color: #005a9e;
+        transform: scale(1.07);
+      }
+
+      /* Mobile-friendly */
+      @media (max-width: 768px) {
+        .cards-container {
+          grid-template-columns: 1fr; /* full width on mobile/tablet */
+        }
+        header nav a {
+          margin-left: 12px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <div class="logo">Ujjwal Rana</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/aboutMe">About Me</a>
+        <a href="/aboutCodroid" target="_blank">CodroidHub</a>
+        <a href="https://github.com/Ujjwal-Rana786" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/ujjwal-rana-b284b3360/" target="_blank">LinkedIn</a>
+        <a href="/blogs">Blogs</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Power BI Dashboards Showcase</h1>
+        <p>
+          Explore a collection of interactive and insightful dashboards across various business domains.
+        </p>
+      </div>
+
+      <!-- Dashboard Cards -->
+      <div class="cards-container">
+        <!-- Card 1: Madhav E-commerce Dashboard -->
+        <div class="card">
+          <img class="card-icon" src="https://cdn-icons-png.flaticon.com/512/3796/3796120.png" alt="Sales Icon" />
+          <h2 class="card-title">Madhav E-commerce Dashboard</h2>
+          <p class="card-description">
+            A Power BI project with API integration providing key insights into profit trends, sales performance,
+            customer behaviors, and state-wise sales analytics to track growth and profitability effectively.
+          </p>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiY2RjOWM5MjktMmNiNC00ZTQ4LWE0MjEtZjg1OThkNTRkMzdhIiwidCI6IjQxZTQ3ODk1LWJiYzItNDQ0NC05MzJmLTY0NGRjYzY4ZTYwYyJ9"
+             class="card-button">View Dashboard</a>
+        </div>
+
+        <!-- Card 2: Real Time Weather Dashboard -->
+        <div class="card">
+          <img class="card-icon" src="/static/wheather.jpeg" alt="Weather Icon" />
+          <h2 class="card-title">Real Time Weather Dashboard</h2>
+          <p class="card-description">
+            A live Power BI dashboard fetching weather data for Indian cities (Ambala, Noida, Ajmer, Mumbai, Lucknow, Hyderabad) 
+            including temperature, humidity, wind speed, and real‑time conditions with interactive maps.
+          </p>
+          <a href="https://app.powerbi.com/view?r=eyJrIjoiMzhlZTNiMDctMjM4YS00NGQzLTllMTQtMWEwZjdkNzc2NTI2IiwidCI6IjQxZTQ3ODk1LWJiYzItNDQ0NC05MzJmLTY0NGRjYzY4ZTYwYyJ9"
+             class="card-button">View Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

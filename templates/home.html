@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ujjwal Rana | Portfolio & CodroidHub Programs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #5a2e9d; /* Slightly darker purple for contrast */
+    --secondary: #3b82f6; /* A clear, professional blue */
+    --bg-light: #f9fbfd;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --nav-bg: rgba(255, 255, 255, 0.9);
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-light);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAVIGATION BAR */
+  header {
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--nav-bg);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(18px, 4vw, 22px);
+    color: var(--primary);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .logo svg {
+    width: clamp(24px, 5vw, 32px);
+    height: clamp(24px, 5vw, 32px);
+    fill: var(--primary);
+  }
+
+  nav a {
+    margin-left: clamp(16px, 3vw, 24px);
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+
+  nav a:hover {
+    color: var(--secondary);
+    transform: translateY(-2px);
+  }
+
+  /* HERO SECTION */
+  @keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .hero {
+    position: relative;
+    padding: 80px 8% 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    background: linear-gradient(-45deg, #e0c3fc, #8ec5fc, #fbc2eb, #a6c0fe);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+    overflow: hidden;
+  }
+
+  .hero-content {
+    flex: 1 1 500px;
+    z-index: 1;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  .hero-content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 16px;
+    color: var(--text-dark);
+  }
+
+  .internship-info {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(90, 46, 157, 0.1);
+    padding: clamp(20px, 4vw, 32px);
+    max-width: 520px;
+    margin-bottom: 32px;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--text-light);
+    line-height: 1.6;
+    animation: slideInLeft 1s ease-in-out forwards 0.2s;
+  }
+
+  .internship-info ul {
+    padding-left: 20px;
+    margin: 12px 0 0 0;
+  }
+
+  .internship-info li {
+    margin-bottom: 10px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border: none;
+    padding: 14px 32px;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-size 0.3s ease;
+    cursor: pointer;
+    background-size: 200% 100%;
+    background-position: left;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    background-position: right;
+  }
+
+  .hero-image {
+    flex: 1 1 350px;
+    text-align: center;
+    z-index: 1;
+    animation: slideInRight 1s ease-in-out forwards 0.4s;
+  }
+
+  .hero-image img {
+    max-width: clamp(250px, 50vw, 320px);
+    border-radius: 50%;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
+
+  .hero-image img:hover {
+    transform: scale(1.05);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--primary);
+    color: #eee;
+    text-align: center;
+    padding: 20px 8%;
+    font-size: 0.9rem;
+  }
+
+  /* KEYFRAME ANIMATIONS */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* MEDIA QUERIES */
+  @media (max-width: 1024px) {
+    .hero {
+      flex-direction: column-reverse; /* Put image on top for better flow on smaller screens */
+      text-align: center;
+      padding: 60px 5% 80px;
+    }
+
+    .hero-content, .internship-info {
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .hero-image {
+      margin-bottom: 30px;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2rem, 6vw, 2.5rem);
+    }
+
+    .internship-info {
+      padding: 24px;
+    }
+
+    nav a {
+      margin-left: 12px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    nav {
+      width: 100%;
+      text-align: center;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      margin: 0 5px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo" aria-label="Ujjwal Rana Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" role="img" >
+      <path d="M55 10H9a3 3 0 0 0-3 3v38a3 3 0 0 0 3 3h46a3 3 0 0 0 3-3V13a3 3 0 0 0-3-3Zm-3 35H12V19h40Zm-25-5h-6v-3h6Zm0-5h-6v-3h6Zm16 5h-6v-3h6Zm0-5h-6v-3h6Zm-8 11a2 2 0 0 1-2-2v-6h4v6a2 2 0 0 1-2 2Zm18-18-3.56-3.56-1.41 1.41L47.17 34l-4.14 4.14 1.41 1.41L53 30.83Z" />
+    </svg>
+    Ujjwal Rana
+  </a>
+  <nav>
+    <a href="/aboutMe">About Me</a>
+    <a href="/aboutCodroid">CodroidHub</a>
+    <a href="https://github.com/Ujjwal-Rana786" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/ujjwal-rana-b284b3360/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="/blogs">Blogs</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Summer Training in Data Science</h1>
+      <p>
+        Learn from industry experts at CodroidHub. Our summer training covers Data Science, Python, AI, and Machine Learning, with a focus on real-world projects and career-ready skills.
+      </p>
+
+      <div class="internship-info" aria-label="Internship details">
+        <strong>Internship Details:</strong>
+        <ul>
+          <li>BCA Final Year Student at GC Ambala (Cantt)</li>
+          <li>6-Week Internship in Data Science Using Python</li>
+          <li>Skills Earned: Python, Data Visualization and Analysis using Power BI</li>
+          <li>Data Mining and Web Scraping (Using APIs, requests, BeautifulSoup)</li>
+          <li>Deployment Using Flask</li>
+          <li>Git and GitHub</li>
+          <li>Importance of LinkedIn in Data Science</li>
+          <li>Data Visualization, Analysis, and Cleaning using NumPy, Pandas, and Matplotlib</li>
+        </ul>
+      </div>
+
+      <a href="/explore" class="btn-primary" aria-label="View Internship Work">View Internship Work</a>
+    </div>
+
+    <div class="hero-image" aria-label="Profile photo of Ujjwal Rana">
+      <img src="/static/Ujjwal.jpg" alt="Ujjwal Rana Photo" />
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Ujjwal Rana. All Rights Reserved.
+</footer>
+
+</body>
+</html>

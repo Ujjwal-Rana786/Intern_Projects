@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API-Powered Web Scraping</title>
+    <!-- Importing the Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px 30px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        backdrop-filter: blur(6px);
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+      header .logo {
+        font-weight: bold;
+        font-size: 22px;
+        color: #007bff;
+        letter-spacing: 1px;
+      }
+      header nav {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      header nav a {
+        margin-left: 25px;
+        text-decoration: none;
+        color: #444;
+        font-weight: 500;
+        font-size: 16px;
+        transition: 0.3s;
+        position: relative;
+      }
+      header nav a::after {
+        content: '';
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        bottom: -4px;
+        left: 0;
+        background: #007bff;
+        transition: 0.3s;
+      }
+      header nav a:hover {
+        color: #007bff;
+      }
+      header nav a:hover::after {
+        width: 100%;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-attachment: fixed;
+      }
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+        padding: 2rem;
+        flex: 1;
+      }
+      .page-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        margin-top: 4rem;
+        animation: fadeIn 1s ease-in-out;
+      }
+      .page-header h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        color: #007bff;
+        margin-bottom: 0.5rem;
+      }
+      .page-header p {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        color: #555;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(4px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 0.875rem;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+      .card-icon {
+        width: 200px; /* Increased image width */
+        height: 200px; /* Increased image height */
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease;
+      }
+      .card:hover .card-icon {
+        transform: scale(1.1);
+      }
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2a2a2a;
+        margin-bottom: 0.5rem;
+      }
+      .card-description {
+        color: #777;
+        margin-bottom: 1rem;
+      }
+      /* Buttons */
+      .card-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .card-button {
+        max-width: 180px;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.875rem;
+        text-align: center;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        display: block;
+      }
+      .card-button.primary {
+        background: linear-gradient(135deg, #007bff, #0056d6);
+        color: #fff;
+      }
+      .card-button.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      }
+      .card-button.secondary {
+        background: #ffffff;
+        border: 2px solid #007bff;
+        color: #007bff;
+      }
+      .card-button.secondary:hover {
+        background: #f0f8ff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Ujjwal Rana</div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/aboutMe">About Me</a>
+        <a href="/aboutCodroid" target="_blank">CodroidHub</a>
+        <a href="https://github.com/Ujjwal-Rana786" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/ujjwal-rana-b284b3360/" target="_blank">LinkedIn</a>
+        <a href="/blogs">Blogs</a>
+      </nav>
+    </header>
+
+    <div class="container">
+      <div class="page-header">
+        <h1>Web Scraping with APIs</h1>
+        <p>
+          Discover modern, efficient ways to collect data without traditional
+          scraping methods. Leverage dedicated APIs for structured data extraction.
+        </p>
+      </div>
+
+      <div class="cards-container">
+        <!-- Card 1: Public APIs -->
+        <div class="card">
+          <img
+            class="card-icon"
+            src="/static/yahofinance.jpeg"
+            alt="yahooapple"
+          />
+          <h2 class="card-title">Yahoo Finance</h2>
+          <p class="card-description">
+            From this website we scraped the Stocks details of Apple company.
+          </p>
+          <div class="card-buttons">
+            <a
+              href="https://finance.yahoo.com/quote/AAPL/"
+              class="card-button primary"
+              target="_blank"
+              >Go to Website</a
+            >
+            <a
+              href="/yahoofinance"
+              class="card-button secondary"
+              target="_blank"
+              >View Scraped Data</a
+            >
+          </div>
+        </div>
+
+        <!-- Card 2: Scraping-as-a-Service -->
+        <div class="card">
+          <img
+            class="card-icon"
+            src="https://cdn-icons-png.flaticon.com/512/3676/3676644.png"
+            alt="API Service Icon"
+          />
+          <h2 class="card-title">Crpyto Currency </h2>
+          <p class="card-description">
+            Use Crpto currancy website to scrape the deatils of stock like opening, closing , low, volume etc.
+          
+          </p>
+          <div class="card-buttons">
+            <a
+              href="https://finance.yahoo.com/quote/BTC-USD/history/"
+              class="card-button primary"
+              target="_blank"
+              >Go to Website</a
+            >
+            <a
+              href="/crpyto"
+              class="card-button secondary"
+              target="_blank"
+              >View Scraped Data</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
